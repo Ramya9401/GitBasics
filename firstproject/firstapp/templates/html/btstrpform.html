@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registration form</title>
+	 <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body >
+	<h2>Registration</h2>
+	<form >
+		<div class="form-group">
+			<label>firstname:</label>
+			<input type="text" name="fname" class="form-control"  placeholder="enter firstname">
+		</div>
+		<div class="form-group">
+			<label>lastname:</label>
+			<input type="text" name="lname" class="form-control"   placeholder="enter lastname">
+		</div>
+		<div class="form-group">
+			<label>email id:</label>
+			<input type="email" name="email" class="form-control"  placeholder="enter emailid">
+		</div>
+		<div class="form-group">
+			<label>phone number:</label>
+			<input type="number" name="number" class="form-control"  placeholder="enter number">
+		</div>
+		<div class="form-group form-check">
+			<label>gender:</label>
+			<input type="radio" name="gender" value="male" class="form-check-input">male
+			<input type="radio" name="gender" value="female" class="form-check-input">female
+			<input type="radio" name="gender" value="others" class="form-check-input">others
+		</div>
+		<div class="form-group">
+			<label>Address:</label>
+			<textarea name="Address" class="form-control"  ></textarea>
+		</div>
+		<div class=" form-group form-check">
+			<label>languages:</label>
+			<input type="checkbox" name="checkbox" value="python" class="form-check-input">python
+			<input type="checkbox" name="checkbox" value="C" class="form-check-input">C
+			<input type="checkbox" name="checkbox" value="Java" class="form-check-input">Java
+			<input type="checkbox" name="checkbox" value="Html" class="form-check-input">Html
+		</div>
+		<div class="form-group ">
+			<label>choose languages:</label>
+			<select name="clanguage" >
+				<option value=""></option>
+			<option value="python">python</option>
+			<option value="C">C</option>
+			<option value="C++">C++</option>
+			<option value="Java">Java</option>				
+			<option value="Html">Html</option>
+			<option value="CSS">CSS</option>
+			</select>
+		</div>
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+
+</body>
+</html>

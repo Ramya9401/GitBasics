@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registartion form</title>
+</head>
+<body>
+    <form action="{% url 'regform' %}" method="post">
+    	{% csrf_token %}
+    	<label>first name:</label>
+    	<input type="text" name="fname" placeholder="enter first name"><br><br>
+		<label>last name:</label>
+    	<input type="text" name="lname" placeholder="enter last name">  <br><br>  	
+    	<label>Email id::</label>
+    	<input type="email" name="emailid" placeholder="enter emailid"><br><br>
+    	<label>phone no.:</label>
+    	<input type="number" name="number" placeholder="enter number"><br><br>
+    	<label>gender:</label>
+    	<input type="radio" name="gender" value="female">
+    	<label>Female</label>
+    	<input type="radio" name="gender" value="male">
+    	<label>Male</label>
+    	<input type="radio" name="gender" value="other">
+    	<label>Others</label><br><br>
+    	<label>Address:</label>
+    	<input type="Address" name="address" placeholder="enter Address"><br><br>
+    	<label>languages:</label><br>
+    	<input type="checkbox" name="checkbox" value="pyhton">
+    	<label>python</label>
+    	<input type="checkbox" name="checkbox" value="C">
+    	<label>C</label>
+    	<input type="checkbox" name="checkbox" value="C++">
+    	<label>C++</label>
+    	<input type="checkbox" name="checkbox" value="Html">
+    	<label>Html</label>
+    	<input type="checkbox" name="checkbox" value="CSS">
+    	<label>CSS</label><br><br>
+    	<label>choose language:</label>
+    	<select name="Language">
+    		<option > </option>
+    		<option value="python">python</option>
+    		<option value="C">C</option>
+    		<option value="C++">C++</option>
+    		<option value="Java">Java</option>
+    		<option value="Html,css">Html,css</option>
+    	</select><br><br>
+    	<input type="submit" name="submit" value="select">
+    </form>
+</body>
+</html>

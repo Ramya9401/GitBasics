@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>registration form</title>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+	<form action="{% url 'reg1' %}" method="post">
+		{% csrf_token %}
+	<div class="row ">
+		<div class="col text-center bg-primary">
+	<h2>Registration Form</h2>
+	</div>
+</div>
+	<div class="text-center  bg-secondary">
+		<label>Name:</label>
+		<input type="text" name="name" placeholder="enter your name" class="form control my-3"><br>
+		<label>Email Id:</label>
+		<input type="email" name="email" placeholder="enter emailid" class="form control"><br>
+		<input type="submit" name="submit" value="submit" class="form control my-2 btn btn-outline-primary">
+</div>
+</form>
+</body>
+</html>

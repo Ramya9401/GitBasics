@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Display Info</title>
+</head>
+<body background="{% static 'images/desktop.PNG' %}">
+	<h2>Hi {{username}}</h2>
+	<table border="1">
+		<tr>
+			<thead>
+				<th>username</th>
+				<th>rollno</th>
+				<th>email id</th>
+			</thead>
+		</tr>
+		<tr>
+			<tbody>
+				<td>{{username}}</td>
+				<td>{{rno}}</td>
+				<td>{{email}}</td>
+			</tbody>
+		</tr>
+	</table>
+
+</body>
+</html>
