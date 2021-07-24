@@ -1,0 +1,37 @@
+{% extends 'app/base.html' %}
+{% block title%}Items view{% endblock %}
+{% block content%}
+<div class="container mt-4">
+	<div class="card col-md-6 mx-auto shadow-lg">
+		<div class="card-body">
+			<h3>Items view</h3>
+			<div class="row">
+				<div class="col-sm ">
+					<img src="{{z.img.url}}" height="200px" width="110%">
+				</div>
+				<div class="col">
+					<table class="table table-borderless">
+				<tr>
+				<th>Item name</th>
+				<td>{{z.iname}}</td>
+			</tr>
+			<tr>
+				<th>Items category</th>
+				<td>{{z.icategory}}</td>
+			</tr>
+			<tr>
+				<th>Price</th>
+				<td>{{z.price}}</td>
+			</tr>
+			<tr>
+				<th>Availability</th>
+				<td>{{z.iavail}}</td>
+			</tr>
+			</table>
+				</div>
+			</div>
+			<a href="{% url 'il' %}" class="btn btn-outline-success form-control mx-2">Back to list</a>
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'app/base.html' %}
+{% block title%} Delete Details{% endblock %}
+{% block content %}
+<div class="container mt-4">
+	<div class="card col-md-6 mx-auto bg-dark text-light">
+		<div class="card-body">
+			<h3>Are You Sure You Want To Delete {{z.rname}} ?</h3>
+			<div class="row">
+				<div class="col">
+					<form method="post">
+						{%csrf_token%}
+					<input type="submit" name="submit" value="yes confirm" class="form-control col-sm btn btn-outline-danger">
+				</div>
+			</form>
+				<div class="col">
+					<a href="{% url 'il' %}" class="form-control col-sm btn btn-outline-info">Back</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

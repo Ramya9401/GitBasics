@@ -1,0 +1,25 @@
+{% extends 'app/base.html' %}
+{% block title %}Items update{% endblock %}
+{% block content %}
+<div class="container mt-4">
+	<div class="card col-md-6 mx-auto shadow-lg">
+		<div class="card-body">
+			<h3>Update the Items</h3>
+			<form method="post" enctype="multipart/form-data">
+				{% csrf_token %}
+				{% for i in m %}
+				{{i}}
+				{% endfor %}
+				<div class="row">
+					<div class="col">
+						<a href="{% url 'il' %}" class="form-control btn btn-outline-warning my-2">Back to List</a>
+					</div>
+					<div class="col">
+						<input type="submit" name="submit" value="update" class="form-control btn btn-outline-success my-2">
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}
