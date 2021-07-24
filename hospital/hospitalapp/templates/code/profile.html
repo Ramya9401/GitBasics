@@ -1,0 +1,81 @@
+{% extends 'code/base.html' %}
+{% load static %}
+{% block title %}Profile{% endblock%}
+{% block content%}
+<div class="container mt-4">
+	<div class="bg-dark text-center text-light p-2">
+	<h3>Profile</h3>
+	</div>
+		<div>
+		<div class="row">
+			<div class=" card col-md-4  text-light text-center bg-secondary mx-3 p-2 h-50">
+				<div class="card-body">
+				<h3>Image</h3>
+				<img src="{{user.uimg.url}}" class="rounded-circle" height="250px" width="300px">
+			</div>
+		</div>
+			<div class=" card col-md-7 text-dark bg-light pr-2">
+				<div class="card-body">
+				<table class="table table-borderless text-center">
+					<h3 style="text-align: center;">Details</h3>
+					<tr>
+						<th>Name:</th>
+						<td><h5>{{user.username}}</h5></td>
+					</tr>
+					<th> first Name:</th>
+						<td><h5>{{user.first_name}}</h5></td>
+					</tr>
+					<th>Last Name:</th>
+						<td><h5>{{user.last_name}}</h5></td>
+					</tr>
+					<th>Email:</th>
+						<td><h5>{{user.email}}</h5></td>
+					</tr>
+					<tr>
+						<th>Age:</th>
+						<td><h5>{{user.age}}</h5></td>
+					</tr>
+					<tr>
+						<th>Mobile number:</th>
+						<td><h5>{{user.mobilenumber}}</h5></td>
+					</tr>
+					<tr>
+						<th>Role:</th>
+						<td>
+							{% if user.role == 3 %}
+							<h5>Patient</h5>
+							{% elif user.role == 2 %}
+							<h5>HR manager</h5>
+							{% elif user.role == 4%}
+							<h5>Doctor</h5>
+							{% else %}
+							<h5>Guest</h5>
+							{% endif %}
+						</td>
+					</tr>
+					<tr>
+						<th>Date_joined</th>
+						<td><h5>{{user.date_joined}}</h5></td>
+					</tr>
+					<tr>
+						<th>Last Login</th>
+						<td><h5>{{user.last_login}}</h5></td>
+					</tr>
+				</table>
+				<form method="post">
+					{% csrf_token %}
+					<div class="row">
+						<div class="col">
+							<a href="{% url 'hm' %}" class="btn btn-outline-warning form-control col-sm my-2">Home</a>
+						</div>
+						<div class="col">
+							<a href="{% url 'pfup' %}" class="btn btn-outline-success col-sm form-control my-2">Update profile </a>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		</div>
+</div>
+</div>
+{% endblock %}

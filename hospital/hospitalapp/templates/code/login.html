@@ -1,0 +1,24 @@
+{% extends 'code/base.html' %}
+{% block title%}Login {% endblock %}
+{% block content %}
+<div class="container mt-4 mx-auto">
+  <div class="card col-md-6 mx-auto shadow-lg">
+    <div class="card-body">
+      <h3>Login</h3>
+      <form method="post">
+        {% csrf_token %}
+        <input type="text" name="username" class="form-control my-2" placeholder="enter username">
+        <input type="password" name="password" class="form-control my-2" placeholder="enter password">
+        <div class="row">
+          <div class="col">
+          <a href="{% url 'reg' %}" class="form-control btn btn-outline-warning my-2">New user?</a> 
+          </div>
+          <div class="col">
+            <input type="submit" name="submit" value="Login" class="btn btn-outline-success form-control my-2">            
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

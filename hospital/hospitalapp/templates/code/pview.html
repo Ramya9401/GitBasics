@@ -1,0 +1,36 @@
+{% extends 'code/base.html' %}
+{% block title %}patient details {% endblock %}
+{% block content %}
+<div class="container mt-4">
+<div class="card col-md mx-auto shadow-lg">
+		<div class="card-body">
+			<h3 class=" text-center text-light bg-danger p-2 border rounded">List of patients</h3>
+				<table class="table table-borderless table-hover">
+					<tr class="bg-dark text-light">
+						<th>S.NO</th>
+						<th>patient</th>
+						<th>Age</th>
+						<th>Diagnozation</th>
+						<th>visits</th>
+						<th>Files</th>
+						<th>Actions</th>
+					</tr>
+					{% for k in a %}
+					<tr>
+						<td>{{forloop.counter}}</td>
+						<td>{{k.pname}}</td>
+						<td >{{k.page}}</td>
+						<td>{{k.diag}}</td>
+						<td>{{k.visits}}</td>
+						<td>
+							<a href="{% url 'md' k.id %}" class="btn btn-outline-info">medical chart</a></td>
+						<td>	
+							<a href="{% url 'pdl' k.id %}" class="btn btn-outline-danger">Delete</a>
+						</td>
+					</tr>
+					{% endfor %}
+				</table>
+		</div>
+	</div>
+</div>
+{% endblock %}

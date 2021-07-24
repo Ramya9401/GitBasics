@@ -1,0 +1,74 @@
+{% extends 'code/base.html' %}
+{% block title %}patients list {% endblock %}
+{% block content %}
+<div class="container mt-4">
+	{% if messages %}
+	{% for m in messages %}
+	<div class="alert alert-{{m.tags}} alert-dismissible">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  {{m}}
+	</div>
+	{% endfor %}
+	{% endif%}
+	<div class="row">
+	<div class=" card col-md-4 mx-auto shadow-lg h-100">
+		<div class="card-body">
+		<form method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+			<h3>ADD PATIENTS</h3>
+			{% for i in y %}
+			{% if forloop.counter == 1 %}
+			<select class="form-control my-2" name="did">
+				{% for j in er %}
+				<option value="{{j.id}}">{{j}}</option>
+				{% endfor %}
+			</select>
+			{% elif forloop.counter >= 2 %}
+			<div>{{i}}</div>
+			{% endif %}
+			{% endfor %}
+			<div class="row">
+				<div class="col">
+					<input type="reset" value="Reset" class="form-control btn btn-outline-danger my-2">
+				</div>
+				<div class="col">
+					<input type="submit" value="Enter details" class="form-control btn-outline-success my-2">
+				</div>
+			</div>
+		</form>
+	    </div>
+	</div>
+	<div class="card col-md mx-auto shadow-lg">
+		<div class="card-body">
+			<h3 class=" text-center text-light bg-danger p-2 border rounded">List of patients</h3>
+				<table class="table table-borderless table-hover">
+					<tr class="bg-dark text-light">
+						<th>S.NO</th>
+						<th>Doctor</th>
+						<th>patient</th>
+						<th>Diagnozation</th>
+						<th>visits</th>
+						<th>Files</th>
+						<th>Actions</th>
+					</tr>
+					{% for k in a %}
+					<tr>
+						<td>{{forloop.counter}}</td>
+						<td>{{k.4}}</td>
+						<td >{{k.0}}</td>
+						<td>{{k.1}}</td>
+						<td>{{k.2}}</td>
+						<td>
+							<a href="{% url 'md' k.3 %}" class="btn btn-outline-info">medic</a></td>
+						<td>	
+							<a href="{% url 'pup' k.3 %}" class="btn btn-outline-warning">Update</a>
+							<a href="{% url 'pdl' k.3 %}" class="btn btn-outline-danger">Delete</a>
+						</td>
+					</tr>
+					{% endfor %}
+				</table>
+		</div>
+	</div>
+</div>
+</div>
+{% endblock %}

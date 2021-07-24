@@ -1,0 +1,37 @@
+{% extends 'code/base.html' %}
+{% block title %}Details view{% endblock %}
+{% block content %}
+<div class="container mt-4">
+	<div class="card col-md-6 mx-auto shadow-lg">
+		<div class="card-body">
+			<h3>Doctor Details</h3>
+			<div class="row">
+				<div class="col-sm ">
+					<img src="{{z.dimg.url}}" height="200px" width="110%">
+				</div>
+				<div class="col">
+					<table class="table table-borderless">
+				<tr>
+				<th>Name:</th>
+				<td>{{z.dname}}</td>
+			</tr>
+			<tr>
+				<th>Specialization</th>
+				<td>{{z.special}}</td>
+			</tr>
+			<tr>
+				<th>Experience</th>
+				<td>{{z.exp}}</td>
+			</tr>
+			<tr>
+				<th>Timmings</th>
+				<td>{{z.tfrom}}-{{z.tto}}</td>
+			</tr>
+			</table>
+				</div>
+			</div>
+			<a href="{% url 'dl' %}" class="btn btn-outline-success form-control mx-2">Back to list</a>
+		</div>
+	</div>
+</div>
+{% endblock %}

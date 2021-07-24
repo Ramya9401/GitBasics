@@ -1,0 +1,33 @@
+{% extends 'code/base.html' %}
+{% block title%}Role request{% endblock %}
+{% block content %}
+<div class="container mt-4">
+	{% if c == 0 %}
+	<div class="card col-md-6 shadow-lg mx-auto">
+		<div class="card-body">
+			<h3>Request Form</h3>
+			<form method="post" enctype="multipart/form-data">
+				{% csrf_token %}
+				{% for n in d %}
+				{% if forloop.counter == 1 %}
+				<input type="text" name="uname" value="{{request.user.username}}" class="form-control" readonly>
+				{% elif forloop.counter >= 2 %}
+				<div>{{n}}</div>
+				{% endif %}
+				{% endfor %}
+				<div class="row">
+					<div class="col">
+						<a href="{% url 'hm' %}" class="btn btn-outline-info my-2 form-control"> Back</a>
+					</div>
+					<div class="col">
+						<input type="submit" value="Request" class="btn btn-outline-success my-2 form-control">
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	{% else %}
+	<h3>you have already requested your role please wait until admin give access to you.</h3>
+	{% endif %}
+</div>
+{% endblock %}

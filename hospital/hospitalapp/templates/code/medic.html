@@ -1,0 +1,63 @@
+{% extends 'code/base.html' %}
+{% block title %}Medical details {% endblock %}
+{% block content %}
+<div class="container mt-4">
+	<div class="bg-dark text-center text-light p-2">
+	<h3>Medical Chart</h3>
+	</div>
+		<div>
+		<div class="row">
+			<div class=" card col-md-4  text-light text-center bg-secondary mx-3 p-2 h-50">
+				<div class="card-body">
+				<h3>Image</h3>
+				<img src="{{user.uimg.url}}" class="rounded-circle" height="250px" width="300px">
+			</div>
+		</div>
+			<div class=" card col-md-7 text-dark bg-light pr-2">
+				<div class="card-body">
+				<table class="table table-borderless text-center">
+					<h3 style="text-align: center;">Details</h3>
+					<tr>
+						<th>Name:</th>
+						<td><h5>{{user.username}}</h5></td>
+					</tr>
+					<tr>
+						<th>Age:</th>
+						<td><h5>{{user.age}}</h5></td>
+					</tr>
+					<tr>
+						<th>Mobile number:</th>
+						<td><h5>{{user.mobilenumber}}</h5></td>
+					</tr>
+					<table class="table table-borderless ">
+						<tr>
+							<th>S.No</th>
+							<th>Medicine</th>
+							<th>Timmings</th>
+						</tr>
+						{% for j in l %}
+						<tr>
+							<td>{{forloop.counter}}</td>
+							<td>{{j.med}}</td>
+							<td>{{j.time}}</td>
+						</tr>
+						{% endfor %}
+					</table>
+				</table>
+				<form method="post">
+					{% csrf_token %}
+					<div class="row">
+						<div class="col">
+							<a href="{% url 'hm' %}" class="btn btn-outline-warning form-control col-sm my-2">Home</a>
+						</div>
+						<div class="col">
+							<a href="{% url 'mdup'  %}" class="btn btn-outline-success col-sm form-control my-2">Update Chart</a>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		</div>
+</div>
+</div>
+{% endblock %}

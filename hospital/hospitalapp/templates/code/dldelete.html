@@ -1,0 +1,20 @@
+{% extends 'code/base.html' %}
+{% block title %}delete page{% endblock %}
+{% block content %}
+<div class="container mt-4 ">
+	<div class="card col-md-6 mx-auto shadow-lg ">
+		<form method="post">
+			{% csrf_token %}
+			<h3>Are You Sure?</h3>
+			<div class="row">
+				<div class="col">
+					<a href="{% url 'dl' %}" class="btn btn-outline-warning form-control my-2">Back to List</a>
+				</div>
+				<div class="col">
+					<input type="submit" value="Delete" class="btn btn-outline-success my-2 form-control">
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+{% endblock %}

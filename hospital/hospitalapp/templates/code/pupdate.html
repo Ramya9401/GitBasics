@@ -1,0 +1,31 @@
+{% extends 'code/base.html' %}
+{% block title %}patients list update {% endblock %}
+{% block content %}
+<div class="container mt-4">
+	<div class="card col-md-6 mx-auto shadow-lg">
+		<div class="card-body">
+			<form method="post" enctype="multipart/form-data">
+				{% csrf_token %}
+				<h3>Update Details</h3>
+				{% for i in t %}
+				{{i}}
+				{% endfor %}
+				<div class="row">
+					<div class="col">
+						<input type="submit" value="Update" class="form-control btn btn-outline-success my-2">
+					</div>
+					{% if user.role == 4 %}
+					<div class="col">
+						<a href="{% url 'pv' %}" class="form-control btn btn-outline-warning my-2">Back to list</a>
+					</div>
+					{% else %}
+					<div class="col">
+						<a href="{% url 'pl' %}" class="form-control btn btn-outline-warning my-2">Back to list</a>
+					</div>
+					{% endif %}
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}

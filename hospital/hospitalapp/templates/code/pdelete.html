@@ -1,0 +1,26 @@
+{% extends 'code/base.html' %}
+{% block title %}patients list delete{% endblock %}
+{% block content %}
+<div class="container mt-4">
+	<div class="col-md-6 mx-auto shadow-lg">
+		<form method="post">
+			{% csrf_token %}
+			<h3>Are You Sure?</h3>
+			<div class="row">
+				{% if user.role == 4 %}
+				<div class="col">
+					<a href="{% url 'pv' %}" class="form-control btn btn-outline-warning my-2">Back to list</a>
+				</div>
+				{% else %}
+				<div class="col">
+					<a href="{% url 'pl' %}" class="form-control btn btn-outline-warning my-2">Back to list</a>
+				</div>
+				{% endif %}
+				<div class="col">
+					<input type="submit" value="Delete" class="form-control btn btn-outline-danger my-2">
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'code/base.html' %}
+{% block title %} details update{% endblock %}
+{% block content %}
+<div class="container mt-4">
+	<div class="col-md-6 mx-auto shadow-lg">
+		<form method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+			<h3>Update details</h3>
+			{% for i in t %}
+			{{i}}
+			{% endfor %}
+			<div class="row">
+				<div class="col ">
+					<a href="{% url 'dl' %}" class="btn btn-outline-primary form-control my-2">back to list</a>
+				</div>
+				<div class="col">
+					<input type="submit" value="update" class="btn btn-outline-success form-control my-2">
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+{% endblock %}

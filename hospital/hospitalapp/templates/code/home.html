@@ -1,0 +1,111 @@
+{% extends 'code/base.html' %}
+{% block title %}home page {% endblock %}
+{% block content %}
+<div class="container mt-4">
+  {% if user.is_superuser %}
+  <div class="jumbotron col-md-6 mx-auto mt-4 shadow-lg">
+    <h3>you are in admin account</h3>
+  </div>
+   {% elif user.role == 1 %}
+  <div class="jumbotron col-md-6 mt-4 mx-auto shadow-lg">
+    <h3>You are in Guest Account</h3>
+  </div>
+  {% else %}
+	<div class=" text-center shadow-lg bg-secondary text-light ">
+		<h3>welcome to home page</h3>
+	</div>
+	<div class="row" style="padding-left:5px">
+		<div class="col-md-8 bg-dark mx-2">
+			<div class="carousel slide" data-ride="carousel" id="hosp">
+				<ul class="carousel-indicators">
+				<li data-taget="#hosp" data-slide-to="0" class="active"></li>
+				<li data-taget="#hosp" data-slide-to="1"></li>
+				<li data-taget="#hosp" data-slide-to="2"></li>
+				<li data-taget="#hosp" data-slide-to="3"></li>
+				</ul>
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIqzPnxNt51e9nRPs97qAplWFBmFcNGvqZsg&usqp=CAU" style="height:350px;width:100% !important">
+             		 </div>
+             		 <div class="carousel-item">
+					<img src="https://www.cratersandfreighters.com/wp-content/uploads/2020/04/blog-image-medship-1-1080x468.jpg" style="height:350px;width:100% !important">
+             		 </div>
+             		 <div class="carousel-item">
+					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZLH9GkLqddvuKhoDLVhLuYNXtSKayTzGFzg&usqp=CAU" style="height:350px;width:100% !important">
+             		 </div>
+					<div class="carousel-item">
+					<img src="https://i.pinimg.com/originals/e5/16/4f/e5164f98a3ff931b5fa806688ec00803.jpg" style="height:350px;width:100% !important">
+             		 </div>
+				</div>
+				<a href="#hosp" class="carousel-control-prev" data-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a href="#hosp" class="carousel-control-next" data-slide="next" >
+              <span class="carousel-control-next-icon " ></span>
+            </a>
+				</div>
+			</div>
+			<div class="col bg-info text-light mx-2">
+				<div class="row">
+        <h3>SPECIALITS</h3>
+        <ul>
+          <h4>
+          <li>Gynaecologist</li>
+          <li>Otolaryngologist(ENT)</li>
+          <li>Gastroenterologists</li>
+          <li>Dermatologist</li>
+          <li>Orthopedic</li>
+          <li>Endocrinologist</li>
+          <li>Neurologist</li>
+          <li>Plastic surgeon</li>
+        </h4>
+      </ul>
+      </div>
+				
+			</div>
+	</div>
+
+	<div class="row">
+    {% if user.role == 4 %}
+    {% for x in l %}
+    <div class=" col col-md-3 ">
+      <div class="card shadow-lg my-2 ">
+        <img src="{{x.pimg.url}}" class="card-img-top rounded-circle pl-4 pr-4" height="150px">
+        <div class="card-body">
+            <div class="card-title">
+               <h3>{{x.pname}}</h3>
+            </div>
+            <div class="card-text">
+              <h6>Age:{{x.page}}</h6>
+              <h6>Diagonization:{{x.diag}}</h6>
+              <h6>Visits:{{x.visits}}</h6>
+            </div>
+        </div>
+    </div>
+    </div>
+    {% endfor %}
+    {% else %}
+		{% for x in y %}
+    <div class=" col col-md-3 ">
+      <div class="card shadow-lg my-2 ">
+        <img src="{{x.dimg.url}}" class="card-img-top rounded-circle pl-4 pr-4" height="150px">
+        <div class="card-body">
+            <div class="card-title">
+               <h3>{{x.dname}}</h3>
+            </div>
+            <div class="card-text">
+              <h6>Specialization:{{x.special}}</h6>
+              <h6>experience:{{x.exp}}</h6>
+              <h6>Timmings:{{x.tfrom}}-{{x.tto}}</h6>
+              <a href="{% url 'pd' x.id %}" class="form-control my-2 btn btn-outline-success">Patient Details</a>
+            </div>
+        </div>
+    </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+		</div>
+    {% endif %}
+</div>
+
+{% endblock %}

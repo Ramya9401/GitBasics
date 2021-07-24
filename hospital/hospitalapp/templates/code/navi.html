@@ -1,0 +1,91 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <!-- Brand/logo -->
+  <a class="navbar-brand" href="#">
+    <!--<img src="bird.jpg" alt="logo" style="width:40px;">-->
+    Hospital
+  </a>
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+  <!-- Links -->
+  <ul class="navbar-nav">
+    {% if not user.is_authenticated %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'hm' %}">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'ab' %}">About</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'reg' %}">Registration</a>
+    </li>
+    {% elif user.role == 2 %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'hm' %}">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'dl' %}">Doctors list</a>
+    </li>
+     <li class="nav-item">
+      <a class="nav-link" href="{% url 'pl' %}">patients list</a>
+    </li>
+    {% elif user.role == 3 %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'mp' %}">Main Page</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'pmv' %}">Medications</a>
+    </li>
+    {% elif user.role == 4 %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'hm' %}">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'pv' %}">patients details</a>
+    </li>
+    {% elif user.is_superuser %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'hm' %}">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'gvpr' %}">Permissions</a>
+    </li>
+    {% else %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'hm' %}">Home</a>
+    </li>
+     <li class="nav-item">
+      <a class="nav-link" href="{% url 'ab' %}">About</a>
+    </li>
+     <li class="nav-item">
+      <a class="nav-link" href="{% url 'rlrq' %}">Role Request</a>
+    </li>
+    {% endif %}
+  </ul>
+  <ul class="navbar-nav ml-auto" style="margin-right: 120px">
+    {% if not user.is_authenticated %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'lg' %}">Login</a>
+    </li>
+    {% else %}
+
+    <div class="dropdown">
+  <li class="nav-link dropdown-toggle" data-toggle="dropdown">
+  
+    <img src="{{user.uimg.url}}" class="rounded-circle" height="30px">
+    {{request.user.username}}
+  </li>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="{% url 'pf' %}">profile</a>
+    <a class="dropdown-item" href="{% url 'chpwd' %}">change password</a>
+    <a class="dropdown-item" href="{% url 'lgo' %}">logout</a>
+  </div>
+</div>
+    {% endif %}
+  </ul>
+
+</div>
+</nav>
